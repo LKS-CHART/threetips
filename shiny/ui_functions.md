@@ -1,5 +1,6 @@
 Creating UI functions
 ================
+September 04, 2020
 
 Functional programming works hand-in-hand with modular app design
 frameworks like {golem} and Shiny modules. Defining functions to can be

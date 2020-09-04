@@ -1,5 +1,6 @@
 Deploying apps with {golem}’s `run_app()`
 ================
+September 04, 2020
 
 When deploying [{golem}](https://github.com/ThinkR-open/golem) Shiny
 applications, the `run_app()` function is very critical but can be under
