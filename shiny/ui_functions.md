@@ -44,31 +44,6 @@ grid layout to help organize the repeated info boxes.
 }
 ```
 
-<style type="text/css">
-/* CSS stylesheet */
-    
-/* Define a grid layout for organizing info boxes */
-.grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 1em;
-}
-
-/* A wrapper class for each info box */
-.wrapper {
-    border: solid 2px grey;
-}
-
-.header {
-    font-size: 2rem;
-}
-
-.description {
-    color: light-grey;
-    font-size: 1rem;
-}
-</style>
-
 Next, we define the `info_box()` function that will create our desired
 UI element. Since this is a function, we can also take advantage of
 function parameters to pass in data dynamically.
@@ -106,61 +81,9 @@ htmltools::div(
 )
 ```
 
-<!--html_preserve-->
-
-<div class="grid">
-
-<div class="wrapper">
-
-<div class="header">
-
-Header1
-
-</div>
-
-<div class="description">
-
-Emoji: 👍
-
-</div>
-
-</div>
-
-<div class="wrapper">
-
-<div class="header">
-
-Header2
-
-</div>
-
-<div class="description">
-
-Emoji: 😄
-
-</div>
-
-</div>
-
-<div class="wrapper">
-
-<div class="header">
-
-Header3
-
-</div>
-
-<div class="description">
-
-Emoji: 😼
-
-</div>
-
-</div>
-
-</div>
-
-<!--/html_preserve-->
+![](img/three_info_box.PNG) (Note: I’m inserting screenshots here
+because CSS doesn’t work on GitHub markdown :), but if you knit this
+using RMarkdown, it should look the same as the screenshots.)
 
 For highly repetitive instances, we can even combine this with {purrr}
 to create an even more concise UI function.
@@ -174,109 +97,7 @@ htmltools::div(
 )
 ```
 
-<!--html_preserve-->
-
-<div class="grid">
-
-<div class="wrapper">
-
-<div class="header">
-
-Header1
-
-</div>
-
-<div class="description">
-
-Emoji: 👍
-
-</div>
-
-</div>
-
-<div class="wrapper">
-
-<div class="header">
-
-Header2
-
-</div>
-
-<div class="description">
-
-Emoji: 😄
-
-</div>
-
-</div>
-
-<div class="wrapper">
-
-<div class="header">
-
-Header3
-
-</div>
-
-<div class="description">
-
-Emoji: 😼
-
-</div>
-
-</div>
-
-<div class="wrapper">
-
-<div class="header">
-
-Header4
-
-</div>
-
-<div class="description">
-
-Emoji: 🚀
-
-</div>
-
-</div>
-
-<div class="wrapper">
-
-<div class="header">
-
-Header5
-
-</div>
-
-<div class="description">
-
-Emoji: 🐼
-
-</div>
-
-</div>
-
-<div class="wrapper">
-
-<div class="header">
-
-Header6
-
-</div>
-
-<div class="description">
-
-Emoji: 🐮
-
-</div>
-
-</div>
-
-</div>
-
-<!--/html_preserve-->
+![](img/six_info_box.PNG)
 
 Compare this to what the code would look like without using functions\!
 

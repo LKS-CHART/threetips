@@ -4,7 +4,8 @@ output: github_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE,
+                      eval = FALSE)
 ```
 
 Functional programming works hand-in-hand with modular app design frameworks like {golem} and Shiny modules. Defining functions to can be helpful to reduce code clutter for repetitive tasks, and can also be helpful for documentation and code review purposes. Functions can also be tested :).
@@ -75,6 +76,9 @@ htmltools::div(
 
 ```
 
+![](img/three_info_box.PNG)
+(Note: I'm inserting screenshots here because CSS doesn't work on GitHub markdown :), but if you knit this using RMarkdown, it should look the same as the screenshots.)
+
 For highly repetitive instances, we can even combine this with {purrr} to create an even more concise UI function.
 
 ```{r}
@@ -86,9 +90,11 @@ htmltools::div(
 )
 ```
 
+![](img/six_info_box.PNG)
+
 Compare this to what the code would look like without using functions!
 
-```{r eval = F}
+```{r}
 htmltools::div(
     class = "grid",
     htmltools::div(
