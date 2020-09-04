@@ -6,7 +6,7 @@ would like to highlight/share with others, as well as document for
 myself. Inspired by [Thoughtbot’s
 TIL](https://github.com/thoughtbot/til), I hope to use this medium as a
 way to document the little tricks and hacks I pick up along the way.
-Topics will probably involve my interests, which are currently R
+Topics will involve my areas of interests, which are currently R
 programming, Shiny development, and statistical/machine learning
 modeling.
 
