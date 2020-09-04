@@ -7,10 +7,6 @@ output: github_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-```{r}
-library(shiny)
-```
-
 Functional programming works hand-in-hand with modular app design frameworks like {golem} and Shiny modules. Defining functions to can be helpful to reduce code clutter for repetitive tasks, and can also be helpful for documentation and code review purposes. Functions can also be tested :).
 
 # Why define custom UI functions?
@@ -21,7 +17,7 @@ To facilitate the example, I've defined a few CSS rules. None of these are parti
 
 ```{css}
 /* CSS stylesheet */
-
+    
 /* Define a grid layout for organizing info boxes */
 .grid {
     display: grid;
@@ -34,9 +30,13 @@ To facilitate the example, I've defined a few CSS rules. None of these are parti
     border: solid 2px grey;
 }
 
-/* Change the colour for the description text */
-.wrapper > h3 {
+.header {
+    font-size: 2rem;
+}
+
+.description {
     color: light-grey;
+    font-size: 1rem;
 }
 ```
 
@@ -46,8 +46,14 @@ Next, we define the `info_box()` function that will create our desired UI elemen
 info_box <- function(header, description){
     htmltools::div(
         class = "wrapper",
-        htmltools::h1(header),
-        htmltools::h3(description)
+        htmltools::div(
+            class = "header",
+            header
+        ),
+        htmltools::div(
+            class = "description",
+            description
+        )
     )
 }
 
@@ -77,6 +83,56 @@ htmltools::div(
     purrr::map(1:6,
                ~ info_box(glue::glue("Header{.x}"),
                           glue::glue("Emoji: {emo::ji(emojis[.x])}")))
+)
+```
+
+Compare this to what the code would look like without using functions!
+
+```{r eval = F}
+htmltools::div(
+    class = "grid",
+    htmltools::div(
+        class = "wrapper",
+        htmltools::div(class = "header",
+                       "Header1"),
+        htmltools::div(class = "description",
+                       "Emoji: {emo::ji(emojis[1])}")
+    ),
+    htmltools::div(
+        class = "wrapper",
+        htmltools::div(class = "header",
+                       "Header2"),
+        htmltools::div(class = "description",
+                       "Emoji: {emo::ji(emojis[2])}")
+    ),
+    htmltools::div(
+        class = "wrapper",
+        htmltools::div(class = "header",
+                       "Header3"),
+        htmltools::div(class = "description",
+                       "Emoji: {emo::ji(emojis[3])}")
+    ),
+    htmltools::div(
+        class = "wrapper",
+        htmltools::div(class = "header",
+                       "Header4"),
+        htmltools::div(class = "description",
+                       "Emoji: {emo::ji(emojis[4])}")
+    ),
+    htmltools::div(
+        class = "wrapper",
+        htmltools::div(class = "header",
+                       "Header5"),
+        htmltools::div(class = "description",
+                       "Emoji: {emo::ji(emojis[5])}")
+    ),
+    htmltools::div(
+        class = "wrapper",
+        htmltools::div(class = "header",
+                       "Header6"),
+        htmltools::div(class = "description",
+                       "Emoji: {emo::ji(emojis[6])}")
+    )
 )
 ```
 

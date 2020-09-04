@@ -1,10 +1,6 @@
 Creating UI functions
 ================
 
-``` r
-library(shiny)
-```
-
 Functional programming works hand-in-hand with modular app design
 frameworks like {golem} and Shiny modules. Defining functions to can be
 helpful to reduce code clutter for repetitive tasks, and can also be
@@ -25,7 +21,7 @@ grid layout to help organize the repeated info boxes.
 
 ``` css
 /* CSS stylesheet */
-
+    
 /* Define a grid layout for organizing info boxes */
 .grid {
     display: grid;
@@ -38,15 +34,19 @@ grid layout to help organize the repeated info boxes.
     border: solid 2px grey;
 }
 
-/* Change the colour for the description text */
-.wrapper > h3 {
+.header {
+    font-size: 2rem;
+}
+
+.description {
     color: light-grey;
+    font-size: 1rem;
 }
 ```
 
 <style type="text/css">
 /* CSS stylesheet */
-
+    
 /* Define a grid layout for organizing info boxes */
 .grid {
     display: grid;
@@ -59,9 +59,13 @@ grid layout to help organize the repeated info boxes.
     border: solid 2px grey;
 }
 
-/* Change the colour for the description text */
-.wrapper > h3 {
+.header {
+    font-size: 2rem;
+}
+
+.description {
     color: light-grey;
+    font-size: 1rem;
 }
 </style>
 
@@ -73,8 +77,14 @@ function parameters to pass in data dynamically.
 info_box <- function(header, description){
     htmltools::div(
         class = "wrapper",
-        htmltools::h1(header),
-        htmltools::h3(description)
+        htmltools::div(
+            class = "header",
+            header
+        ),
+        htmltools::div(
+            class = "description",
+            description
+        )
     )
 }
 ```
@@ -102,49 +112,49 @@ htmltools::div(
 
 <div class="wrapper">
 
-<h1>
+<div class="header">
 
 Header1
 
-</h1>
+</div>
 
-<h3>
+<div class="description">
 
 Emoji: 👍
 
-</h3>
+</div>
 
 </div>
 
 <div class="wrapper">
 
-<h1>
+<div class="header">
 
 Header2
 
-</h1>
+</div>
 
-<h3>
+<div class="description">
 
 Emoji: 😄
 
-</h3>
+</div>
 
 </div>
 
 <div class="wrapper">
 
-<h1>
+<div class="header">
 
 Header3
 
-</h1>
+</div>
 
-<h3>
+<div class="description">
 
 Emoji: 😼
 
-</h3>
+</div>
 
 </div>
 
@@ -170,100 +180,150 @@ htmltools::div(
 
 <div class="wrapper">
 
-<h1>
+<div class="header">
 
 Header1
 
-</h1>
+</div>
 
-<h3>
+<div class="description">
 
 Emoji: 👍
 
-</h3>
+</div>
 
 </div>
 
 <div class="wrapper">
 
-<h1>
+<div class="header">
 
 Header2
 
-</h1>
+</div>
 
-<h3>
+<div class="description">
 
 Emoji: 😄
 
-</h3>
+</div>
 
 </div>
 
 <div class="wrapper">
 
-<h1>
+<div class="header">
 
 Header3
 
-</h1>
+</div>
 
-<h3>
+<div class="description">
 
 Emoji: 😼
 
-</h3>
+</div>
 
 </div>
 
 <div class="wrapper">
 
-<h1>
+<div class="header">
 
 Header4
 
-</h1>
+</div>
 
-<h3>
+<div class="description">
 
 Emoji: 🚀
 
-</h3>
+</div>
 
 </div>
 
 <div class="wrapper">
 
-<h1>
+<div class="header">
 
 Header5
 
-</h1>
+</div>
 
-<h3>
+<div class="description">
 
 Emoji: 🐼
 
-</h3>
+</div>
 
 </div>
 
 <div class="wrapper">
 
-<h1>
+<div class="header">
 
 Header6
 
-</h1>
+</div>
 
-<h3>
+<div class="description">
 
 Emoji: 🐮
 
-</h3>
+</div>
 
 </div>
 
 </div>
 
 <!--/html_preserve-->
+
+Compare this to what the code would look like without using functions\!
+
+``` r
+htmltools::div(
+    class = "grid",
+    htmltools::div(
+        class = "wrapper",
+        htmltools::div(class = "header",
+                       "Header1"),
+        htmltools::div(class = "description",
+                       "Emoji: {emo::ji(emojis[1])}")
+    ),
+    htmltools::div(
+        class = "wrapper",
+        htmltools::div(class = "header",
+                       "Header2"),
+        htmltools::div(class = "description",
+                       "Emoji: {emo::ji(emojis[2])}")
+    ),
+    htmltools::div(
+        class = "wrapper",
+        htmltools::div(class = "header",
+                       "Header3"),
+        htmltools::div(class = "description",
+                       "Emoji: {emo::ji(emojis[3])}")
+    ),
+    htmltools::div(
+        class = "wrapper",
+        htmltools::div(class = "header",
+                       "Header4"),
+        htmltools::div(class = "description",
+                       "Emoji: {emo::ji(emojis[4])}")
+    ),
+    htmltools::div(
+        class = "wrapper",
+        htmltools::div(class = "header",
+                       "Header5"),
+        htmltools::div(class = "description",
+                       "Emoji: {emo::ji(emojis[5])}")
+    ),
+    htmltools::div(
+        class = "wrapper",
+        htmltools::div(class = "header",
+                       "Header6"),
+        htmltools::div(class = "description",
+                       "Emoji: {emo::ji(emojis[6])}")
+    )
+)
+```
