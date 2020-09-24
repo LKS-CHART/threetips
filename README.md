@@ -1,7 +1,7 @@
 3tips
 ================
 
-3tips is a repository of helpful/interesting things I’ve learned and
+3tips is a repository of helpful/interesting things we’ve learned and
 would like to highlight/share with others, as well as document for
 myself. Inspired by [Thoughtbot’s
 TIL](https://github.com/thoughtbot/til), I hope to use this medium as a
@@ -12,8 +12,8 @@ modeling.
 
 ## 3tips sessions
 
-*The main motivation behind 3tips is for me to easily share knowledge
-with my co-workers. As such, the progression of 3tips will be tied to
+*The main motivation behind 3tips is to quickly share knowledge
+with the team. As such, the progression of 3tips will be tied to
 3tips sessions where we go over three tips and tricks.*
 
 <details>
