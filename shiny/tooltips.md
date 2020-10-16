@@ -16,15 +16,14 @@ much space:
 
 ![COVID dashboard example](img/tooltips/covid_example.PNG)
 
-The [shinyBS](https://ebailey78.github.io/shinyBS/index.html) package
-provides some utilities for adding tooltips to items but (at least at
-the time of writing) I found the APIs to be a bit
-complicated/inflexible. This tutorial will demonstrate the
+This tutorial demonstrates the
 [chartui](https://github.com/LKS-CHART/charui) tooltip utilities but
-feel free to explore `shinyBS` too.
+feel free to explore
+[shinyBS](https://ebailey78.github.io/shinyBS/index.html) for tooltips
+too.
 
 Also note that interactive `chartui` examples can be viewed live in the
-[chartui dashboard](http://172.29.165.21:3939/chartui/) on RSC.
+[chartui dashboard](http://172.29.165.21:3939/chartui/).
 
 Setup/installation
 ------------------
