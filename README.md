@@ -23,5 +23,12 @@ with the team. As such, the progression of 3tips will be tied to
   - [How I (currently) debug Shiny apps](shiny/debugging.md)
   - [Utilizing {golem}’s `run_app()`](shiny/golem_run_app.md)
   - [Functional UI development](shiny/ui_functions.md)
+</details>
+
+<details>
+<summary>October 16, 2020</summary>
+
+  - [Using mocks in unit tests](unit_tests/mockery.md)
+  - [Tooltips in R Shiny Using chartui](shiny/tooltips.md)
 
 </details>
