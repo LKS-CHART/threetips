@@ -24,7 +24,7 @@ Further, if an app makes a connection to a database but does not have a robust c
 
 This is why our apps typically include some DB cleanup code:
 
-``` {R}
+```R
 # When this shiny session ends (eg. when user closes their browser), close the
 # database connection.
 session$onSessionEnded(function(){
@@ -92,12 +92,12 @@ To flush this out a bit more into examples below:
 ## R Examples using `{pool}`
 
 Install from CRAN:
-``` {R}
+```R
 renv::install("pool")
 ```
 
 At the top level of your app, instantiate a pool, and register a callback to close the pool when the app terminates:
-``` {R}
+```R
 run_app <- function(...){
 
   ...
@@ -124,7 +124,7 @@ run_app <- function(...){
 ```
 
 Making queries:
-```
+```R
 full_table <- pool::dbReadTable(db_pool, "table_name")
 
 get_one_query <- "SELECT * FROM table WHERE id=2;"
@@ -145,7 +145,7 @@ In some cases we need to access an actual DB connection object - for instance, w
 A good practice for doing this is to encapsulate whatever operation needs a `con` inside a function, and return the connection to the pool in the `on.exit` handler of the function.
 
 For example:
-``` R
+```R
 my_func_using_a_con <- function(db_pool){
   con <-pool::poolCheckout(db_pool)
   # This function will get called regardless of how my_func_using_a_con exits
@@ -168,7 +168,7 @@ my_func_using_a_con <- function(db_pool){
 `glue::glue_sql` expects a `.con` parameter corresponding to a DB connection - passing it a `pool` object will fail though.
 
 So we can wrap `glue_sql` in another utility function that will use `pool` instead:
-``` {R}
+```R
 pool_glue_sql <- function(db_pool, query, values) {
     # Retrieve a con and register to return it after this function exits.
     con <- pool::poolCheckout(db_pool)
@@ -187,7 +187,7 @@ pool_glue_sql <- function(db_pool, query, values) {
 
 We can (and should) define a more abstract utility function that takes a db_pool, and will safely perform some function with a connection retrieved from the pool:
 
-``` R
+```R
 with_con_from_pool <- function(db_pool, func){
   # Retrieve a con and register to return it after this function exits.
   con <- pool::poolCheckout(db_pool)
