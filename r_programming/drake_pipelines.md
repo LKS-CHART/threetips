@@ -2,9 +2,9 @@ Developing and deploying R pipelines with {drake}
 ================
 David Dai
 
-November 19, 2020
+November 20, 2020
 
-> For more details, please refer to [the official `drake` documentation.](https://books.ropensci.org/drake/)
+> For more details, please refer to the [official drake documentation.](https://books.ropensci.org/drake/)
 
 # What is a pipeline?
 
@@ -131,25 +131,25 @@ pipeline.
 #' @import drake
 create_prediction_pipeline <- function() {
     drake::drake_plan(
-
+        
         # Get patient cohort
         patient_cohort = get_patient_cohort(),
-
+        
         # Get labs data
         labs_data = get_labs_data(),
-
+        
         # Get meds data
         meds_data = get_meds_data(),
-
+        
         # Process all data
         processed_data = process_data(patient_cohort,
                                       labs_data,
                                       meds_data),
-
+        
         # Send email alert
         alert = send_alert(processed_data = processed_data,
                            recipients = "david.dai@unityhealth.to")
-
+        
     )
 }
 ```
@@ -167,6 +167,52 @@ create_prediction_pipeline <- function() {
 
 > Side note: developing `drake` pipelines in an R package structure is
 > recommended, as `drake` pipelines are function-based and fits nicely
-> in a package format. This also allows you to use the package
-> development tools, including handy functions like
-> `devtools::load_all()` and `devtools::test()`.
+> in a package format. Just make sure to put all your functions in the
+> `R/` folder. This also allows you to use the package development
+> tools, including handy functions like `devtools::load_all()` and
+> `devtools::test()`.
+
+4.  Keep iterating until your pipeline is done\! Chances are, you will
+    be making changes to your original `drake` plan several times along
+    the way, and that’s totally fine. Don’t stress about making things
+    perfect - this just provides a framework for which to organize your
+    work.
+
+# Deploying `drake` pipelines
+
+`drake` pipelines can be deployed and scheduled on RStudio Connect using
+RMarkdown documents. If you have developed your project in an R project
+structure, then your deployment is as simple as this:
+
+``` r
+# Load all functions
+devtools::load_all()
+
+# Create pipeline
+pipeline <- create_prediction_pipeline()
+
+# Create cache for today's job
+today <- format(Sys.Date(), "%Y_%m%d")
+cache_path <- file.path("path/to/cache/root", 
+                        today)
+dir.create(cache_path)
+
+# Run pipeline
+drake::make(pipeline,
+            cache_path = cache_path)
+```
+
+In fact, every single one of your future pipeline deployments will look
+almost identical to this :) Note: `devtools::load_all()` will only work
+if your deployment RMarkdown is in the root folder of your project, ie.
+at the same level as your `R/` folder and `DESCRIPTION` file. This will
+work if you only have one pipeline deployment, but if you have multiple
+deployments for your project, stay tuned for a follow-up session on a
+more general way on how to structure your repositories.
+
+# `drake` development workflows + GitHub + collaboration
+
+Since `drake` development is function-oriented, it’s very easy to
+collaborate with other team members on the same project. If you are
+working on a new function that creates an intermediate target, you
+should create a new branch and submit a PR for code review.
