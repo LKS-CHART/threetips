@@ -39,7 +39,7 @@ with my co-workers. As such, the progression of 3tips will be tied to
 
 <summary>November 19, 2020</summary>
 
-  - [Better database connections with `pool`]()
+  - [Better database connections with `pool`](r_programming/pool.md)
   - [Developing and deploying R pipelines with
     `drake`](r_programming/drake_pipelines.md)
 
