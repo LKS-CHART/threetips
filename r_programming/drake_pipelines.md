@@ -1,7 +1,10 @@
 Developing and deploying R pipelines with {drake}
 ================
 David Dai
+
 November 19, 2020
+
+> For more details, please refer to [the official `drake` documentation.](https://books.ropensci.org/drake/)
 
 # What is a pipeline?
 
