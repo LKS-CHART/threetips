@@ -4,7 +4,7 @@ Nov 20, 2020
 
 
 
-This is a synopsis of the longer `{pool}` article from RStudio posted [here](!https://shiny.rstudio.com/articles/pool-basics.html).
+This is a synopsis of the longer `{pool}` article from RStudio posted [here](https://shiny.rstudio.com/articles/pool-basics.html).
 
 ## Database Connections
 
@@ -35,11 +35,9 @@ session$onSessionEnded(function(){
 ## Problem
 How many connections should I maintain for my app?
 
-:x: Too many and my app may 'hog' more of the max connections than it really needs.
-
-:x: Too few and my app may be slow since multiple queries from different users may have to share a single DB connection (# of connections can be a bottleneck).
-
-:heavy_check_mark: Ideally, # of connections would scale according to need.
+- :x: Too many and my app may 'hog' more of the max connections than it really needs.
+- :x: Too few and my app may be slow since multiple queries from different users may have to share a single DB connection (# of connections can be a bottleneck).
+- :heavy_check_mark: Ideally, # of connections would scale according to need.
 
 To flush this out a bit more into examples below:
 1. A greedy approach (too many connections)
@@ -59,6 +57,8 @@ To flush this out a bit more into examples below:
 - App will occupy far more connections than it needs - can quickly deplete the 100 max connections. Other apps accessing this DB will also be affected.
 - (related) if the number of current users viewing the app is greater than the max connections, app will fail for new visitors until connections are freed.
 
+---
+
 ### :x: Approach 2: Under-Resourced Approach - 1 Connection Per App
 1. Dashboard app starts and grabs 1 connection.
 2. All queries to the DB use that one connection.
@@ -70,6 +70,8 @@ To flush this out a bit more into examples below:
 #### Cons:
 - Having just 1 connection will be a bottleneck for multiple queries from different people.
 - If the connection is dropped for any reason (eg. DB needs a restart, DB server fails, network issue, etc...) the app will fail trying to use a broken connection. The app will need to be re-started to get a new connection.
+
+---
 
 ### :heavy_check_mark: Approach 3 Connection Pooling with `{pool}`
 1. On App start, initialize a connection `pool` with all the usual database connection parameters (host, port, db name, user, pwd)
@@ -84,7 +86,6 @@ To flush this out a bit more into examples below:
 
 #### Cons:
 - A bit more complicated to implement (luckily `{pool}` does this for us)
-
 
 ## R Examples using `{pool}`
 
