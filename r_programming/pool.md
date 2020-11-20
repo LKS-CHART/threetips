@@ -136,7 +136,7 @@ updated_entry <- pool::dbGetQuery(db_pool, update_query)
 
 For Most cases `dbReadTable` and `dbGetQuery` are sufficient. In these functions, under the hood `{pool}` gets a connection (or creates one if necessary), makes the query, and then returns the connection to the pool.
 
-### Advanced Use
+## (slightly) More Advanced Use Cases
 
 In some cases we need to access an actual DB connection object - for instance, when we're using another R package that requires a `connection` and not a `pool`.
 
