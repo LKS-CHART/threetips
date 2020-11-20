@@ -1,7 +1,6 @@
 ---
 title: "Developing and deploying R pipelines with {drake}"
 output: github_document
-author: David Dai
 date: "`r format(Sys.time(), '%B %d, %Y')`"
 ---
 
@@ -9,6 +8,8 @@ date: "`r format(Sys.time(), '%B %d, %Y')`"
 knitr::opts_chunk$set(echo = TRUE,
                       eval = F)
 ```
+
+> For more details, please refer to the [official drake documentation.](https://books.ropensci.org/drake/)
 
 # What is a pipeline?
 
