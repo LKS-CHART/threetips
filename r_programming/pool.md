@@ -44,6 +44,8 @@ To flush this out a bit more into examples below:
 2. An under-resourced approach (too few connections)
 3. Connection pooling (scaling!)
 
+---
+
 ### :x: Approach 1: A Greedy Approach - 1 Connection per 'user'/session
 
 1. Every new `session` (ie. every new user to visit a dashboard) gets a new DB connection, which is used for all queries needed for that session.
