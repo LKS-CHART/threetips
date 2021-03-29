@@ -20,7 +20,7 @@ For example, they're commonly applied to icons that don't take up too much space
 
 This tutorial demonstrates the [chartui](https://github.com/LKS-CHART/charui) tooltip utilities but feel free to explore [shinyBS](https://ebailey78.github.io/shinyBS/index.html) for tooltips too. 
 
-Also note that interactive `chartui` examples can be viewed live in the [chartui dashboard](http://172.29.165.21:3939/chartui/).
+Also note that interactive `chartui` examples can be viewed live in the [chartui dashboard](http://dsaa.unity.local/chartui/).
 
 ## Setup/installation
 

@@ -23,7 +23,7 @@ feel free to explore
 too.
 
 Also note that interactive `chartui` examples can be viewed live in the
-[chartui dashboard](http://172.29.165.21:3939/chartui/).
+[chartui dashboard](http://dsaa.unity.local/chartui/).
 
 Setup/installation
 ------------------
